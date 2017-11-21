@@ -66,4 +66,3 @@ The `syscalls` plugin provides APIs for getting notified before a system call ex
 Example
 -------
 
-FIXME

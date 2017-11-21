@@ -26,12 +26,6 @@ QEMU_CXXFLAGS+=-std=c++11 -I$(GENDIR)
 # uncomment to enable taint in the FDTRACKER
 # QEMU_CFLAGS+= -DFDTRACKER_ENABLE_TAINT
 
-GENERATED_HEADERS+= $(GENDIR)/gen_syscall_ppp_boilerplate.cpp
-GENERATED_HEADERS+= $(GENDIR)/gen_syscall_ppp_register.cpp
-GENERATED_HEADERS+= $(GENDIR)/gen_syscall_printer.cpp
-GENERATED_HEADERS+= $(GENDIR)/gen_callbacks.hpp
-GENERATED_HEADERS+= $(GENDIR)/gen_default_callbacks.cpp
-GENERATED_HEADERS+= $(GENDIR)/gen_syscalls_ext_typedefs.h
 
 GENPATTERN=$(shell echo $(GENERATED_HEADERS) | sed s/gen_/%/g)
 
