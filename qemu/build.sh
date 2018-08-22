@@ -33,6 +33,9 @@ else
   fi
 fi  
 
+# disable llvm byfhc
+    echo "No suitable LLVM found -- LLVM SUPPORT IS DISABLED"
+    LLVM_BIT=""
 #./configure --target-list=x86_64-softmmu,i386-softmmu,arm-softmmu \
 #--prefix=`pwd`/install \
 #--disable-pie \
