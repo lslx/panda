@@ -19,6 +19,10 @@
 #include <linux/fdtable.h>
 #include <linux/dcache.h>
 #include <linux/mount.h>
+#include "mount.h"
+
+
+
 
 /*
  * This function is used because to print offsets of members
@@ -65,6 +69,7 @@ int init_module(void)
 	struct files_struct filesstruct; /* mind the extra 's' :-P */
 	struct fdtable fdtablestruct;
 	struct vfsmount vfsmountstruct;
+struct mount mountstruct;
 
 	struct task_struct *ts_p;
 	struct cred *cs_p;
@@ -76,6 +81,7 @@ int init_module(void)
 	struct thread_info *ti_p;
 	struct files_struct *fss_p;
 	struct vfsmount *vfsmnt_p;
+struct mount *mnt_p;
 
 	ts_p = &init_task;
 	cs_p = &credstruct;
@@ -87,6 +93,7 @@ int init_module(void)
 	fss_p = &filesstruct;
 	fdt_p = &fdtablestruct;
 	vfsmnt_p = &vfsmountstruct;
+mnt_p = &mountstruct;
 
 	printk(KERN_INFO "--KERNELINFO-BEGIN--\n");
 	printk(KERN_INFO "name = %s|%s|%s\n", utsname()->release, utsname()->version, utsname()->machine);
@@ -135,8 +142,8 @@ int init_module(void)
 	PRINT_OFFSET(fs_p,		f_path.dentry,	"fs");
 	PRINT_OFFSET(fs_p,		f_path.mnt,		"fs");
     PRINT_OFFSET(fs_p,      f_pos,          "fs");
-	PRINT_OFFSET(vfsmnt_p,	mnt_parent,		"fs");
-	PRINT_OFFSET(vfsmnt_p,	mnt_mountpoint, "fs");
+	PRINT_OFFSET(mnt_p,	mnt_parent,		"fs");
+	PRINT_OFFSET(mnt_p,	mnt_mountpoint, "fs");
 	PRINT_OFFSET(vfsmnt_p,	mnt_root,		"fs");	/* XXX: We don't use this anywhere. Marked for removal. */
 
 	/* used in reading FDs */
